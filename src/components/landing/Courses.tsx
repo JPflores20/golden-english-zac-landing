@@ -1,45 +1,54 @@
-import { Baby, Briefcase, Building2, GraduationCap, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { 
+  Baby, Briefcase, Building2, GraduationCap, ArrowRight, LucideIcon 
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
+import { db } from '@/lib/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
-const courses = [
-  {
-    icon: Baby,
-    title: 'Kids & Teens',
-    titleEs: 'Niños y Adolescentes',
-    description: 'Programas diseñados especialmente para jóvenes aprendices. Clases dinámicas y divertidas que fomentan el amor por el idioma.',
-    features: ['Grupos pequeños', 'Actividades interactivas', 'Seguimiento personalizado'],
-    color: 'bg-blue-500/10 text-blue-600',
-  },
-  {
-    icon: Briefcase,
-    title: 'Adults & Professionals',
-    titleEs: 'Adultos y Profesionales',
-    description: 'Cursos flexibles para adultos que buscan mejorar sus habilidades de comunicación en inglés para su vida personal y profesional.',
-    features: ['Horarios flexibles', 'Enfoque práctico', 'Certificación incluida'],
-    color: 'bg-green-500/10 text-green-600',
-  },
-  {
-    icon: Building2,
-    title: 'Business English',
-    titleEs: 'Inglés de Negocios',
-    description: 'Domina el inglés corporativo: presentaciones, negociaciones, emails profesionales y más.',
-    features: ['Casos de estudio reales', 'Vocabulario especializado', 'Simulaciones de negocios'],
-    color: 'bg-purple-500/10 text-purple-600',
-  },
-  {
-    icon: GraduationCap,
-    title: 'TOEFL/Certification Prep',
-    titleEs: 'Preparación TOEFL',
-    description: 'Preparación intensiva para exámenes oficiales. Estrategias probadas para obtener los mejores resultados.',
-    features: ['Material oficial', 'Exámenes de práctica', 'Garantía de resultados'],
-    color: 'bg-orange-500/10 text-orange-600',
-  },
-];
+// Mapa para convertir el texto de Firebase en iconos reales
+const iconMap: Record<string, LucideIcon> = {
+  Baby: Baby,
+  Briefcase: Briefcase,
+  Building2: Building2,
+  GraduationCap: GraduationCap,
+};
+
+interface CourseData {
+  id: string;
+  title: string;
+  titleEs: string;
+  description: string;
+  features: string[];
+  color: string;
+  iconName: string;
+}
 
 const Courses = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const [courses, setCourses] = useState<CourseData[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "courses"));
+        const coursesData = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as CourseData[];
+        setCourses(coursesData);
+      } catch (error) {
+        console.error("Error cargando cursos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   return (
     <section id="cursos" className="py-20 md:py-32">
@@ -57,24 +66,30 @@ const Courses = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {courses.map((course, index) => (
-            <CourseCard key={course.title} course={course} index={index} />
-          ))}
-        </div>
+        {loading ? (
+           <div className="flex justify-center py-10">
+             <p className="text-muted-foreground animate-pulse">Cargando cursos...</p>
+           </div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-6">
+            {courses.map((course, index) => (
+              <CourseCard key={course.id} course={course} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 interface CourseCardProps {
-  course: typeof courses[0];
+  course: CourseData;
   index: number;
 }
 
 const CourseCard = ({ course, index }: CourseCardProps) => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const Icon = course.icon;
+  const Icon = iconMap[course.iconName] || Baby;
 
   return (
     <div

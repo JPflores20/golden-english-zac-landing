@@ -1,40 +1,42 @@
+import { useEffect, useState } from 'react';
 import { Star, Quote } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
-const testimonials = [
-  {
-    name: 'María González',
-    role: 'Business English',
-    avatar: 'MG',
-    rating: 5,
-    quote: 'Golden English cambió mi carrera. Ahora puedo comunicarme con confianza en reuniones internacionales. La metodología natural hace que aprender sea fácil y divertido.',
-  },
-  {
-    name: 'Carlos Ramírez',
-    role: 'TOEFL Prep',
-    avatar: 'CR',
-    rating: 5,
-    quote: 'Logré un puntaje de 110 en el TOEFL gracias a la preparación intensiva. Los profesores son excelentes y el material muy completo.',
-  },
-  {
-    name: 'Ana López',
-    role: 'Adults Program',
-    avatar: 'AL',
-    rating: 5,
-    quote: 'Después de años intentando aprender inglés, finalmente encontré el método correcto. En 6 meses ya podía mantener conversaciones fluidas.',
-  },
-  {
-    name: 'Roberto Martínez',
-    role: 'Kids & Teens',
-    avatar: 'RM',
-    rating: 5,
-    quote: 'Mi hijo de 10 años ama sus clases. Ha mejorado muchísimo y ahora ve películas en inglés sin problemas. ¡Increíble!',
-  },
-];
+interface TestimonialData {
+  id: string;
+  name: string;
+  role: string;
+  avatar: string;
+  rating: number;
+  quote: string;
+}
 
 const Testimonials = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const [testimonials, setTestimonials] = useState<TestimonialData[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "testimonials"));
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as TestimonialData[];
+        setTestimonials(data);
+      } catch (error) {
+        console.error("Error cargando testimonios:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
 
   return (
     <section className="py-20 md:py-32 bg-secondary">
@@ -52,18 +54,24 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={testimonial.name} testimonial={testimonial} index={index} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center py-10">
+            <p className="text-gray-400 animate-pulse">Cargando testimonios...</p>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 interface TestimonialCardProps {
-  testimonial: typeof testimonials[0];
+  testimonial: TestimonialData;
   index: number;
 }
 
@@ -79,22 +87,18 @@ const TestimonialCard = ({ testimonial, index }: TestimonialCardProps) => {
       )}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      {/* Quote Icon */}
       <Quote className="w-8 h-8 text-primary/40 mb-4" />
 
-      {/* Stars */}
       <div className="flex gap-1 mb-4">
         {Array.from({ length: testimonial.rating }).map((_, i) => (
           <Star key={i} className="w-4 h-4 fill-primary text-primary" />
         ))}
       </div>
 
-      {/* Quote */}
       <p className="text-gray-300 mb-6 text-sm leading-relaxed">
         "{testimonial.quote}"
       </p>
 
-      {/* Author */}
       <div className="flex items-center gap-3 pt-4 border-t border-white/10">
         <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
           <span className="text-primary font-semibold text-sm">{testimonial.avatar}</span>
