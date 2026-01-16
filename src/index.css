@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Golden English Zac Design System
+   Primary: Golden/Amber for accents
+   Secondary: Deep Navy for professionalism
+   All colors in HSL
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Golden/Amber Primary */
+    --primary: 43 74% 52%;
+    --primary-foreground: 215 25% 15%;
+
+    /* Navy Secondary */
+    --secondary: 215 50% 23%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 45 30% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Light Golden Accent */
+    --accent: 45 80% 95%;
+    --accent-foreground: 215 50% 23%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 20% 88%;
+    --input: 45 20% 88%;
+    --ring: 43 74% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom Golden English tokens */
+    --golden: 43 74% 52%;
+    --golden-light: 45 80% 70%;
+    --golden-dark: 40 70% 40%;
+    --navy: 215 50% 23%;
+    --navy-light: 215 40% 35%;
+    --navy-dark: 215 55% 15%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 55% 8%;
+    --foreground: 45 30% 96%;
+
+    --card: 215 50% 12%;
+    --card-foreground: 45 30% 96%;
+
+    --popover: 215 50% 12%;
+    --popover-foreground: 45 30% 96%;
+
+    --primary: 43 74% 52%;
+    --primary-foreground: 215 25% 15%;
+
+    --secondary: 215 40% 35%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 40% 20%;
+    --muted-foreground: 45 20% 70%;
+
+    --accent: 215 40% 25%;
+    --accent-foreground: 45 80% 70%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 40% 20%;
+    --input: 215 40% 20%;
+    --ring: 43 74% 52%;
+
+    --golden: 43 74% 52%;
+    --golden-light: 45 80% 70%;
+    --golden-dark: 40 70% 40%;
+    --navy: 215 50% 23%;
+    --navy-light: 215 40% 35%;
+    --navy-dark: 215 55% 15%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  /* Staggered animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Initial state for scroll animations */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .scroll-animate.visible {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
