@@ -3,8 +3,10 @@ import { Facebook, Instagram, MessageCircle, MapPin, Phone } from 'lucide-react'
 const Footer = () => {
   const whatsappUrl = `https://wa.me/524921230781?text=${encodeURIComponent("Hola, me gustaría solicitar más información.")}`;
   const tiktokUrl = "https://www.tiktok.com/@golden.english.za?_r=1&_t=ZS-938BmiZ4F7I";
+  const facebookUrl = "https://www.facebook.com/share/1H8BJfpHmJ/?mibextid=wwXIfr";
+  const instagramUrl = "https://www.instagram.com/golden.english.zacatecas?igsh=MTVvdG5kZTNwc2RyZA==";
   const phoneNumber = "+524929224666";
-  const address = "Avenida Universidad 321-1er piso, La Loma, Zacatecas";
+  const address = "Avenida Universidad 321, La Loma, Zacatecas";
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
@@ -20,29 +22,29 @@ const Footer = () => {
               Formando líderes bilingües a través de una metodología natural y efectiva.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all">
+              <a 
+                href={facebookUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
+              >
                 <Facebook size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all">
+              <a 
+                href={instagramUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
+              >
                 <Instagram size={20} />
               </a>
-              {/* Icono de TikTok corregido */}
               <a 
                 href={tiktokUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
               >
-                <svg 
-                  width="20" 
-                  height="20" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
                 </svg>
               </a>
@@ -70,10 +72,9 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-lg mb-6">Nuestros Cursos</h4>
             <ul className="space-y-4 text-gray-400">
-              <li>Kids & Teens</li>
+              <li>Teens Program</li>
               <li>Adults Program</li>
               <li>Business English</li>
-              <li>TOEFL Prep</li>
             </ul>
           </div>
 
