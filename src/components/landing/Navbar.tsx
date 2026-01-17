@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import NavLink from "../NavLink"; // Ahora funcionará gracias al export default
+import NavLink from "../NavLink";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,13 +17,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Orden invertido: Ubicación primero, luego Contacto
   const navLinks = [
     { name: "Inicio", href: "#inicio" },
     { name: "Metodología", href: "#metodologia" },
     { name: "Cursos", href: "#cursos" },
-    { name: "Ubicación", href: "#ubicacion" }, // Posición actualizada
-    { name: "Contacto", href: "#contacto" },  // Posición actualizada
+    { name: "Ubicación", href: "#ubicacion" },
+    { name: "Contacto", href: "#contacto" },
   ];
 
   return (
@@ -34,11 +33,17 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div 
-          className="flex items-center gap-2 group cursor-pointer" 
+          className="flex items-center gap-2 cursor-pointer" 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform">
-            <Globe className="text-white w-6 h-6" />
+          {/* Contenedor optimizado para evitar pixelado */}
+          <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-white border border-slate-100">
+            <img 
+              src="/logo.jpg" 
+              alt="Golden English Logo" 
+              className="w-full h-full object-contain"
+              style={{ imageRendering: 'auto' }} 
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-bold text-xl text-secondary leading-none">Golden English</span>
