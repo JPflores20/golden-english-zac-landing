@@ -1,7 +1,12 @@
-import { Facebook, Instagram, MessageCircle, MapPin, Phone } from 'lucide-react';
+// Se añadió el icono de Music (que se usa comúnmente para TikTok en Lucide si no está el logo de marca)
+import { Facebook, Instagram, MessageCircle, MapPin, Phone, Music } from 'lucide-react';
 
 const Footer = () => {
-  const whatsappUrl = `https://wa.me/524921230781?text=${encodeURIComponent("Hola, me gustaría solicitar más información sobre los cursos de Golden English.")}`;
+  const whatsappUrl = `https://wa.me/524921230781?text=${encodeURIComponent("Hola, me gustaría solicitar más información.")}`;
+  const tiktokUrl = "https://www.tiktok.com/@golden.english.za?_r=1&_t=ZS-938BmiZ4F7I";
+  const phoneNumber = "+524929224666";
+  const address = "Avenida Universidad 321-1er piso, La Loma, Zacatecas";
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
     <footer className="bg-secondary text-white pt-20 pb-10">
@@ -13,16 +18,30 @@ const Footer = () => {
               <span className="text-xs font-medium tracking-widest uppercase text-gray-400 mt-1">Zacatecas</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Formando líderes bilingües a través de una metodología natural y efectiva desde hace más de una década.
+              Formando líderes bilingües a través de una metodología natural y efectiva.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all">
                 <Instagram size={20} />
               </a>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+              {/* Nuevo icono de TikTok */}
+              <a 
+                href={tiktokUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
+              >
+                <Music size={20} />
+              </a>
+              <a 
+                href={whatsappUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
+              >
                 <MessageCircle size={20} />
               </a>
             </div>
@@ -49,26 +68,26 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-6">Contacto</h4>
+            <h4 className="font-bold text-lg mb-6">Contacto Directo</h4>
             <ul className="space-y-4">
-              <li className="flex gap-3 text-gray-400">
-                <MapPin size={20} className="text-primary shrink-0" />
-                <span>Avenida Universidad 321-1er piso, La Loma, Zacatecas.</span>
+              <li>
+                <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="flex gap-3 text-gray-400 hover:text-primary transition-colors group">
+                  <MapPin size={20} className="text-primary shrink-0" />
+                  <span>Avenida Universidad 321, Zacatecas.</span>
+                </a>
               </li>
-              <li className="flex gap-3 text-gray-400">
-                <Phone size={20} className="text-primary shrink-0" />
-                <span>+52 492 922 4666</span>
-              </li>
-              <li className="flex gap-3 text-gray-400">
-                <MessageCircle size={20} className="text-primary shrink-0" />
-                <span>+52 492 123 0781</span>
+              <li>
+                <a href={`tel:${phoneNumber}`} className="flex gap-3 text-gray-400 hover:text-primary transition-colors group">
+                  <Phone size={20} className="text-primary shrink-0" />
+                  <span>+52 492 922 4666</span>
+                </a>
               </li>
             </ul>
           </div>
         </div>
         
         <div className="pt-8 border-t border-white/10 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Golden English Zacatecas. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Golden English Zacatecas.</p>
         </div>
       </div>
     </footer>

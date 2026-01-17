@@ -1,7 +1,4 @@
-import { MessageCircle, Phone, MapPin, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import { MessageCircle, Phone, MapPin } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 
@@ -11,11 +8,15 @@ const Contact = () => {
   const whatsappNumber = "524921230781";
   const whatsappMessage = encodeURIComponent("Hola, me gustaría solicitar más información sobre los cursos de Golden English.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  
+  const phoneNumber = "+524929224666";
+  const address = "Avenida Universidad 321-1er piso, La Loma, Zacatecas";
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 
   return (
-    <section id="contacto" className="py-20 md:py-32">
+    <section id="contacto" className="py-20 md:py-32 bg-slate-50/50">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div ref={ref} className={cn('text-center mb-16', isVisible && 'animate-fade-up')}>
             <span className="inline-block text-primary font-semibold mb-4 tracking-wide uppercase text-sm">
               Contacto
@@ -24,74 +25,56 @@ const Contact = () => {
               ¿Listo para <span className="text-primary">Empezar?</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Estamos aquí para resolver tus dudas. Contáctanos por el medio que prefieras.
+              Estamos aquí para resolver tus dudas. Haz clic en cualquiera de nuestras opciones para comunicarte de inmediato.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="grid gap-6">
-                <a 
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-primary/30 hover:shadow-md transition-all group"
-                >
-                  <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                    <MessageCircle className="text-green-600 w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-secondary">WhatsApp</h4>
-                    <p className="text-muted-foreground">+52 492 123 0781</p>
-                  </div>
-                </a>
-
-                <div className="flex items-center gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <Phone className="text-primary w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-secondary">Teléfono</h4>
-                    <p className="text-muted-foreground">+52 492 922 4666</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                    <MapPin className="text-primary w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-secondary">Dirección</h4>
-                    <p className="text-muted-foreground text-sm">
-                      Avenida Universidad 321-1er piso, La Loma, Zacatecas.
-                    </p>
-                  </div>
-                </div>
+          {/* Grid de botones de contacto centrados y sin formulario */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center text-center gap-4 p-8 bg-white rounded-3xl border border-slate-100 hover:border-primary/30 hover:shadow-xl transition-all group"
+            >
+              <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <MessageCircle className="text-green-600 w-8 h-8" />
               </div>
-            </div>
+              <div>
+                <h4 className="font-bold text-xl text-secondary mb-1">WhatsApp</h4>
+                <p className="text-muted-foreground">+52 492 123 0781</p>
+              </div>
+            </a>
 
-            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/50">
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-secondary">Nombre</label>
-                    <Input placeholder="Tu nombre" className="rounded-xl border-slate-200 focus:border-primary" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium text-secondary">Teléfono</label>
-                    <Input placeholder="Tu teléfono" className="rounded-xl border-slate-200 focus:border-primary" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-secondary">Mensaje</label>
-                  <Textarea placeholder="¿En qué podemos ayudarte?" className="min-h-[120px] rounded-xl border-slate-200 focus:border-primary" />
-                </div>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white py-6 rounded-xl text-lg font-bold group">
-                  Enviar Mensaje
-                  <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </Button>
-              </form>
-            </div>
+            <a 
+              href={`tel:${phoneNumber}`}
+              className="flex flex-col items-center text-center gap-4 p-8 bg-white rounded-3xl border border-slate-100 hover:border-primary/30 hover:shadow-xl transition-all group"
+            >
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Phone className="text-primary w-8 h-8" />
+              </div>
+              <div>
+                <h4 className="font-bold text-xl text-secondary mb-1">Teléfono</h4>
+                <p className="text-muted-foreground">+52 492 922 4666</p>
+              </div>
+            </a>
+
+            <a 
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center text-center gap-4 p-8 bg-white rounded-3xl border border-slate-100 hover:border-primary/30 hover:shadow-xl transition-all group sm:col-span-2 lg:col-span-1"
+            >
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <MapPin className="text-primary w-8 h-8" />
+              </div>
+              <div>
+                <h4 className="font-bold text-xl text-secondary mb-1">Dirección</h4>
+                <p className="text-muted-foreground text-sm">
+                  Avenida Universidad 321-1er piso, Zacatecas.
+                </p>
+              </div>
+            </a>
           </div>
         </div>
       </div>
