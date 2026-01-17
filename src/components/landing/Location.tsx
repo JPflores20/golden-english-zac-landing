@@ -60,7 +60,7 @@ const Location = () => {
 
           <div className="h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.032646399623!2d-102.57864822550756!3d22.764188726053805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86824e9301980899%3A0xc07871b0583a677e!2sAv%20Universidad%20321%2C%20La%20Loma%2C%2098060%20Zacatecas%2C%20Zac.!5e0!3m2!1ses-419!2smx!4v1700000000000!5m2!1ses-419!2smx"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.0432300869443!2d-102.55063369999999!3d22.7637769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86824eeaa585f5a3%3A0xb23b286743092d75!2sGolden%20English%20Plantel%20Zacatecas!5e0!3m2!1ses-419!2smx!4v1768685595758!5m2!1ses-419!2smx"
               width="100%"
               height="100%"
               style={{ border: 0 }}
