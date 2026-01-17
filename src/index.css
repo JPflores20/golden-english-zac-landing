@@ -125,24 +125,25 @@
 
 @layer utilities {
   /* Scroll-reveal animations */
+  /* CORRECCIÓN: Usamos 'both' para evitar parpadeos y 0.5s para mayor fluidez */
   .animate-fade-up {
-    animation: fadeUp 0.6s ease-out forwards;
+    animation: fadeUp 0.5s ease-out both;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.5s ease-out both;
   }
 
   .animate-slide-in-left {
-    animation: slideInLeft 0.6s ease-out forwards;
+    animation: slideInLeft 0.5s ease-out both;
   }
 
   .animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out forwards;
+    animation: slideInRight 0.5s ease-out both;
   }
 
   .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
+    animation: scaleIn 0.4s ease-out both;
   }
 
   /* Staggered animation delays */
@@ -156,10 +157,11 @@
   .scroll-animate {
     opacity: 0;
     transform: translateY(30px);
+    will-change: opacity, transform; /* Optimización de rendimiento */
   }
 
   .scroll-animate.visible {
-    animation: fadeUp 0.6s ease-out forwards;
+    animation: fadeUp 0.5s ease-out both;
   }
 }
 
