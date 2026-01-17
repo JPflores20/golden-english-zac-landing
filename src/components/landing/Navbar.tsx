@@ -61,7 +61,7 @@ const Navbar = () => {
           ))}
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
             <Button className="bg-primary hover:bg-primary/90 text-white px-6 rounded-full font-semibold transition-all hover:scale-105 shadow-lg shadow-primary/20">
-              Agenda tu Clase
+              Agenda tu Cita
             </Button>
           </a>
         </div>

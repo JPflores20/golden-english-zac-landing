@@ -77,8 +77,38 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+        
+        {/* Sección de Copyright y Créditos del Desarrollador */}
         <div className="pt-8 border-t border-white/10 text-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Golden English Zacatecas.</p>
+          <p className="mb-4">© {new Date().getFullYear()} Golden English Zacatecas. Todos los derechos reservados.</p>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2">
+            <div>
+              <span>Desarrollado por </span>
+              <a 
+                href="https://portafolio-jlfc.web.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors font-medium"
+              >
+                JLFC
+              </a>
+            </div>
+            
+            <span className="hidden md:block mx-2 text-gray-700">|</span>
+            
+            <a 
+              href="https://portafolio-jlfc.web.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors flex items-center gap-2 group"
+            >
+              <span>¿Quieres un sitio web así?</span>
+              <span className="text-primary group-hover:underline underline-offset-4">
+                Contáctame aquí
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

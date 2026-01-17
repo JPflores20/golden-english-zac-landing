@@ -4,6 +4,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import Autoplay from "embla-carousel-autoplay"; // 1. Importar el plugin
 import {
   Carousel,
   CarouselContent,
@@ -100,6 +101,11 @@ const Testimonials = () => {
           </div>
           
           <Carousel
+            plugins={[
+              Autoplay({
+                delay: 3000, // 2. Configuración: Autoplay cada 3 segundos
+              }),
+            ]}
             opts={{
               align: "start",
               loop: true,
