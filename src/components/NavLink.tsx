@@ -1,28 +1,28 @@
-import { NavLink as RouterNavLink, NavLinkProps } from "react-router-dom";
-import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-interface NavLinkCompatProps extends Omit<NavLinkProps, "className"> {
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  scrolled: boolean;
   className?: string;
-  activeClassName?: string;
-  pendingClassName?: string;
 }
 
-const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
-  ({ className, activeClassName, pendingClassName, to, ...props }, ref) => {
-    return (
-      <RouterNavLink
-        ref={ref}
-        to={to}
-        className={({ isActive, isPending }) =>
-          cn(className, isActive && activeClassName, isPending && pendingClassName)
-        }
-        {...props}
-      />
-    );
-  },
-);
-
-NavLink.displayName = "NavLink";
-
-export { NavLink };
+export const NavLink = ({ href, children, scrolled, className }: NavLinkProps) => {
+  return (
+    <a
+      href={href}
+      className={cn(
+        "relative font-medium transition-colors hover:text-primary",
+        // Aquí defines el color: 
+        // Si quieres que cambie de color al hacer scroll, usa la condición 'scrolled'.
+        // Por ahora lo dejaremos en 'text-secondary' (gris oscuro/azul) para que sea visible siempre.
+        scrolled ? "text-secondary" : "text-secondary", 
+        className
+      )}
+    >
+      {children}
+      {/* Línea animada al pasar el mouse (opcional) */}
+      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+    </a>
+  );
+};
