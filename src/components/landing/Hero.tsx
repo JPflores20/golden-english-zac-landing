@@ -1,6 +1,3 @@
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Play } from 'lucide-react';
-
 const Hero = () => {
   return (
     <section
@@ -36,25 +33,6 @@ const Hero = () => {
             La metodología más efectiva para hablar, leer y entender inglés con fluidez. 
             Únete a la mejor comunidad de aprendizaje en Zacatecas.
           </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: '300ms' }}>
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-golden-dark text-primary-foreground font-semibold px-8 py-6 text-lg group"
-            >
-              Comienza Ahora
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/30 bg-transparent text-white hover:bg-white/10 px-8 py-6 text-lg"
-            >
-              <Play className="mr-2 w-5 h-5 fill-white" />
-              Ver Cursos
-            </Button>
-          </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-white/10 animate-fade-up" style={{ animationDelay: '400ms' }}>

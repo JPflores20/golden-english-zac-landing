@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { 
-  Baby, Briefcase, Building2, GraduationCap, ArrowRight, LucideIcon 
+  Baby, Briefcase, Building2, GraduationCap, LucideIcon 
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { db } from '@/lib/firebase';
@@ -109,7 +108,7 @@ const CourseCard = ({ course, index }: CourseCardProps) => {
           <p className="text-primary font-medium text-sm mb-4">{course.titleEs}</p>
           <p className="text-muted-foreground mb-6">{course.description}</p>
           
-          <ul className="space-y-2 mb-6">
+          <ul className="space-y-2">
             {course.features.map((feature) => (
               <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -117,11 +116,6 @@ const CourseCard = ({ course, index }: CourseCardProps) => {
               </li>
             ))}
           </ul>
-
-          <Button variant="outline" className="group/btn border-primary/30 hover:bg-primary hover:text-primary-foreground">
-            Más Información
-            <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-          </Button>
         </div>
       </div>
     </div>
