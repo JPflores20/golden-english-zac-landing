@@ -46,8 +46,10 @@ const Navbar = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-xl text-secondary leading-none">Golden English</span>
-            <span className="text-[10px] font-bold tracking-widest uppercase text-primary">Zacatecas</span>
+            {/* CAMBIO: Golden English ahora es amarillo (text-primary) */}
+            <span className="font-bold text-xl text-primary leading-none">Golden English</span>
+            {/* CAMBIO: Zacatecas ahora es azul marino (text-secondary) */}
+            <span className="text-[10px] font-bold tracking-widest uppercase text-secondary">Zacatecas</span>
           </div>
         </div>
 
