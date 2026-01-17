@@ -1,5 +1,4 @@
-// Se añadió el icono de Music (que se usa comúnmente para TikTok en Lucide si no está el logo de marca)
-import { Facebook, Instagram, MessageCircle, MapPin, Phone, Music } from 'lucide-react';
+import { Facebook, Instagram, MessageCircle, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   const whatsappUrl = `https://wa.me/524921230781?text=${encodeURIComponent("Hola, me gustaría solicitar más información.")}`;
@@ -27,14 +26,25 @@ const Footer = () => {
               <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all">
                 <Instagram size={20} />
               </a>
-              {/* Nuevo icono de TikTok */}
+              {/* Icono de TikTok corregido */}
               <a 
                 href={tiktokUrl} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
               >
-                <Music size={20} />
+                <svg 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
               </a>
               <a 
                 href={whatsappUrl} 

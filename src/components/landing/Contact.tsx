@@ -29,7 +29,6 @@ const Contact = () => {
             </p>
           </div>
 
-          {/* Grid de botones de contacto centrados y sin formulario */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <a 
               href={whatsappUrl}
