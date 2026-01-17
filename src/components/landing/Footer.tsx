@@ -1,4 +1,4 @@
-import { Facebook, Instagram, MessageCircle, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, MessageCircle, MapPin, Phone, Clock } from 'lucide-react';
 
 const Footer = () => {
   const whatsappUrl = `https://wa.me/524921230781?text=${encodeURIComponent("Hola, me gustaría solicitar más información.")}`;
@@ -22,40 +22,14 @@ const Footer = () => {
               Formando líderes bilingües a través de una metodología natural y efectiva.
             </p>
             <div className="flex gap-4">
-              <a 
-                href={facebookUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
-              >
-                <Facebook size={20} />
-              </a>
-              <a 
-                href={instagramUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
-              >
-                <Instagram size={20} />
-              </a>
-              <a 
-                href={tiktokUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
-              >
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Facebook size={20} /></a>
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><Instagram size={20} /></a>
+              <a href={tiktokUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
                 </svg>
               </a>
-              <a 
-                href={whatsappUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"
-              >
-                <MessageCircle size={20} />
-              </a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all"><MessageCircle size={20} /></a>
             </div>
           </div>
 
@@ -93,10 +67,16 @@ const Footer = () => {
                   <span>+52 492 922 4666</span>
                 </a>
               </li>
+              <li className="flex gap-3 text-gray-400">
+                <Clock size={20} className="text-primary shrink-0" />
+                <div className="text-xs">
+                  <p>L-V: 8am-1pm / 4pm-8pm</p>
+                  <p>Sáb: 8am-1pm</p>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
-        
         <div className="pt-8 border-t border-white/10 text-center text-gray-500 text-sm">
           <p>© {new Date().getFullYear()} Golden English Zacatecas.</p>
         </div>

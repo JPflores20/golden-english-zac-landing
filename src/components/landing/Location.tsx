@@ -41,8 +41,8 @@ const Location = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-secondary text-lg">Horario</h4>
-                  <p className="text-muted-foreground">Lunes a Viernes: 7:00 AM - 9:00 PM</p>
-                  <p className="text-muted-foreground">Sábados: 9:00 AM - 2:00 PM</p>
+                  <p className="text-muted-foreground">Lunes a Viernes: 8:00 am - 1:00 pm y 4:00 pm - 8:00 pm</p>
+                  <p className="text-muted-foreground">Sábados: 8:00 am - 1:00 pm</p>
                 </div>
               </div>
 
