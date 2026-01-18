@@ -6,6 +6,7 @@ import Testimonials from "@/components/landing/Testimonials";
 import Contact from "@/components/landing/Contact";
 import Location from "@/components/landing/Location";
 import Footer from "@/components/landing/Footer";
+import PaymentOptions from "@/components/landing/PaymentOptions"; // <--- Importar aquí
 
 const Index = () => {
   return (
@@ -16,9 +17,11 @@ const Index = () => {
         <Methodology />
         <Courses />
         <Testimonials />
-        {/* Ahora Ubicación aparece primero */}
+        
+        {/* Nueva sección de pagos añadida aquí */}
+        <PaymentOptions />
+
         <Location /> 
-        {/* Y Contacto (con los botones) después */}
         <Contact />
       </main>
       <Footer />
